@@ -1,0 +1,17 @@
+.profile__add {
+    margin: auto 0 auto auto;
+    padding: 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+    width: 11.72vw;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 900px) {
+    .profile__add {
+        width: 100%;
+        margin: 32px 0 0 0;
+        padding: 0;
+    }
+}

@@ -13,8 +13,8 @@
 }
 
 @font-face {
-  font-family: 'Inter';
-  font-style:  bold;
+  font-family: "Inter";
+  font-style: bold;
   font-weight: 900;
   src: url("./Inter-Black.woff2") format("woff2");
 }

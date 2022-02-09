@@ -1,0 +1,10 @@
+@import url(./_active/element__like_active.css);
+
+.element__like {
+  transition: opacity 0.3s ease;
+}
+
+.element__like:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}

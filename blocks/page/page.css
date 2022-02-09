@@ -1,25 +1,26 @@
 @media screen and (max-width: 2000px) {
-    .page {
-        margin: 0 auto;
-        padding: 0;
-        background-color: #000;
-        color: #fff;
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: greyscale;
-    }
+  .page {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: greyscale;
+    /* border: 1px solid red; */
+  }
 }
 
 @media screen and (max-width: 1280px) {
-    .page {
-        margin: 0;
-        padding: 0;
-        background-color: #000;
-        color: #fff;
-        font-family: 'Inter', sans-serif;
-        min-width: 320px;
-        max-width: 1280px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: greyscale;
-    }
+  .page {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    min-width: 320px;
+    max-width: 1280px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: greyscale;
+  }
 }

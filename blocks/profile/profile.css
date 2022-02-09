@@ -9,7 +9,7 @@
 .profile {
     width: calc(62.29vw + 82.667px);
     display: flex;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
 }
 

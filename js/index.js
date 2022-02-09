@@ -5,6 +5,7 @@ let profileName = document.querySelector(".profile__name");
 let profileDescription = document.querySelector(".profile__description");
 let saveProfile = popup.querySelector(".popup__button");
 let formElement = popup.querySelector(".popup__container");
+let overlay = popup.querySelector(".popup__overlay");
 
 function popupOpened() {
   popup.classList.add("popup_opened");
@@ -29,4 +30,5 @@ function formSubmitHandler(evt) {
 
 editButton.addEventListener("click", popupOpened);
 popupClose.addEventListener("click", popupClosed);
+overlay.addEventListener("click", popupClosed);
 formElement.addEventListener("submit", formSubmitHandler);

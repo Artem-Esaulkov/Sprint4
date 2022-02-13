@@ -7,15 +7,23 @@
 @import url(../profile/__add-button/profile__add-button.css);
 
 .profile {
-  width: calc(62.29vw + 82.667px);
+  width: calc(282px * 3 + 17px * 2);
   display: flex;
   margin: 0 auto;
   padding: 0;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
+  .profile {
+    width: calc(282px * 2 + 17px);
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 750px) {
   .profile {
     flex-direction: column;
     width: 100%;
+    flex-wrap: nowrap;
   }
 }

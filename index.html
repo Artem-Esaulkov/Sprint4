@@ -7,28 +7,28 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-    <section class="popup">
+    <div class="popup">
       <div class="popup__overlay"></div>
-      <form class="popup__container">
+      <form class="popup__container" name="edit-profile">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input
           type="text"
           class="popup__field popup__field_name"
-          value="Жак-Ив Кусто"
         />
         <input
           type="text"
           class="popup__field popup__field_description"
-          value="Исследователь океана"
+          name="profile-name"
         />
-        <button type="submit" class="popup__button">Сохранить</button>
+        <button type="submit" class="popup__button" aria-label="Сохранить">Сохранить</button>
         <img
           src="./images/close-icon.svg"
           alt="Закрыть окно"
           class="popup__close"
+          name="profile-description"
         />
       </form>
-    </section>
+    </div>
     <header class="header">
       <img
         src="./images/logo-mesto.svg"
@@ -45,23 +45,13 @@
         />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <img
-            src="./images/edit-button-vector.svg"
-            alt="Кнопка редактирования профиля"
-            class="profile__edit-button"
-          />
+          <button type="button" class="profile__edit-button" aria-label="Редактировать"></button>
           <p class="profile__description">Исследователь океана</p>
         </div>
-        <div class="profile__add">
-          <img
-            src="./images/add-button.svg"
-            alt="Кнопка добавления профиля"
-            class="profile__add-button"
-          />
-        </div>
+        <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
-      <ul class="elements">
-        <li class="element">
+      <section class="elements">
+        <article class="element">
           <img
             src="./images/karachaevsk.jpg"
             alt="Карачаевск"
@@ -69,38 +59,38 @@
           />
           <div class="element__description">
             <h2 class="element__title">Карачаевск</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-        <li class="element">
+        </article>
+        <article class="element">
           <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image" />
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-        <li class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__image" />
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-        <li class="element">
+        </article>
+        <article class="element">
           <img src="./images/elbrus.jpg" alt="Эльбрус" class="element__image" />
           <div class="element__description">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-        <li class="element">
+        </article>
+        <article class="element">
           <img src="./images/dombai.jpg" alt="Домбай" class="element__image" />
           <div class="element__description">
             <h2 class="element__title">Домбай</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-        <li class="element">
+        </article>
+        <article class="element">
           <img
             src="./images/karachaevsk.jpg"
             alt="Карачаевск"
@@ -108,10 +98,10 @@
           />
           <div class="element__description">
             <h2 class="element__title">Карачаево-Черкесская республика</h2>
-            <img src="./images/like.svg" alt="Лайк" class="element__like" />
+            <button type="button" class="element__like" aria-label="Нравится"></button>
           </div>
-        </li>
-      </ul>
+        </article>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>

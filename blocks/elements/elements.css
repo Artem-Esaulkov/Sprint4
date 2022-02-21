@@ -7,6 +7,8 @@
   gap: 20px 17px;
   list-style: none;
   width: min-content;
+  /* grid-auto-rows: min-content;
+  grid-auto-columns: min-content; */
 }
 
 @media screen and (max-width: 950px) {

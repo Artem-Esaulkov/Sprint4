@@ -8,9 +8,11 @@
 .popup {
   width: 100%;
   height: 100%;
-  display: none;
+  display: flex;
+  transition: .5s opacity, .5s z-index;
+  opacity: 0;
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0;
   top: 0;

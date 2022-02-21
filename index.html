@@ -7,28 +7,59 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-    <div class="popup">
+
+    <!--Popup - Edit-->
+
+    <div class="popup popup_edit">
       <div class="popup__overlay"></div>
-      <form class="popup__container" name="edit-profile">
+      <form class="popup__container popup__container_edit" name="edit-profile">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input
           type="text"
           class="popup__field popup__field_name"
+          name="profile-name"
         />
         <input
           type="text"
           class="popup__field popup__field_description"
-          name="profile-name"
+          name="profile-description"
         />
         <button type="submit" class="popup__button" aria-label="Сохранить">Сохранить</button>
         <img
           src="./images/close-icon.svg"
           alt="Закрыть окно"
           class="popup__close"
-          name="profile-description"
         />
       </form>
     </div>
+
+    <!--Popup - Add-->
+
+    <div class="popup popup_add">
+      <div class="popup__overlay"></div>
+      <form class="popup__container popup__container_add" name="add-element">
+        <h2 class="popup__title">Новое место</h2>
+        <input
+          type="text"
+          class="popup__field popup__field_title"
+          name="place-name"
+        />
+        <input
+          type="text"
+          class="popup__field popup__field_link"
+          name="place-link"
+        />
+        <button type="submit" class="popup__button" aria-label="Создать">Создать</button>
+        <img
+          src="./images/close-icon.svg"
+          alt="Закрыть окно"
+          class="popup__close"
+        />
+      </form>
+    </div>
+
+    <!-- Header -->
+
     <header class="header">
       <img
         src="./images/logo-mesto.svg"
@@ -36,7 +67,11 @@
         class="header__logo"
       />
     </header>
+
     <main class="content">
+
+      <!-- Profile -->
+
       <section class="profile">
         <img
           src="./images/avatar.png"
@@ -50,7 +85,22 @@
         </div>
         <button type="button" class="profile__add-button" aria-label="Добавить"></button>
       </section>
-      <section class="elements">
+
+      <!-- Elements -->
+
+      <section class="elements"></section>
+
+      <template id="card">
+        <article class="element">
+          <img src="" alt="" class="element__image">
+          <div class="element__description">
+            <h2 class="element__title"></h2>
+            <button type="button" class="element__like_active" aria-label="Нравится"></button>
+          </div>
+        </article>
+      </template>
+      
+      <!-- <section class="elements">
         <article class="element">
           <img
             src="./images/karachaevsk.jpg"
@@ -102,7 +152,10 @@
           </div>
         </article>
       </section>
-    </main>
+    </main> -->
+
+    <!-- Footer -->
+
     <footer class="footer">
       <p class="footer__text">&copy;&nbsp;2022 Mesto Russia</p>
     </footer>

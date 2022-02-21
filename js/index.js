@@ -1,33 +1,122 @@
-let editButton = document.querySelector(".profile__edit-button");
-let popup = document.querySelector(".popup");
-let popupClose = popup.querySelector(".popup__close");
-let profileName = document.querySelector(".profile__name");
-let profileDescription = document.querySelector(".profile__description");
-let saveProfile = popup.querySelector(".popup__button");
-let formElement = popup.querySelector(".popup__container");
-// let overlay = popup.querySelector(".popup__overlay");
-let nameInput = formElement.querySelector(".popup__field_name");
-let descriptionInput = formElement.querySelector(".popup__field_description");
+//Popup variables
+const popup = document.querySelectorAll(".popup");
+const popupEdit = document.querySelector(".popup_edit");
+const popupAdd = document.querySelector(".popup_add");
+const popupEditClose = document.querySelectorAll(".popup__close")[0];
+const popupAddClose = document.querySelectorAll(".popup__close")[1];
+const formElementEdit = popupEdit.querySelector(".popup__container_edit");
+const formElementAdd = popupAdd.querySelector(".popup__container_add");
+const nameInput = formElementEdit.querySelector(".popup__field_name");
+const descriptionInput = formElementEdit.querySelector(".popup__field_description");
+const placeTitleInput = formElementAdd.querySelector(".popup__field_title");
+const placeLinkInput = formElementAdd.querySelector(".popup__field_link");
+// const popupOverlay = popup.querySelector(".popup__overlay");
 
-function popupOpened() {
-  popup.classList.add("popup_opened");
+//Profile variables
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileName = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__description");
+const profileAddButton = document.querySelector(".profile__add-button");
+
+//initialCards declaration
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+//Elements forming
+const elements = document.querySelector('.elements');
+let element = document.querySelector('.element');
+const card = document.querySelector('#card').content;
+
+initialCards.forEach(function(item) {
+  element = card.cloneNode(true);
+  const elementImage = element.querySelector('.element__image');
+  const elementDescription = element.querySelector('.element__description');
+  const elementTitle = elementDescription.querySelector('.element__title');
+  const elementLike = elementDescription.querySelector('.element__like_active');
+
+  elementImage.src = item.link;
+  elementImage.alt = item.name;
+  elementTitle.textContent = item.name;
+
+  elements.append(element);
+  elementLike.addEventListener('click', function(evt) {
+    evt.target.classList.toggle('element__like_active');
+    console.log('AAA');
+  })
+});
+
+//Forms functions
+function openPopup(arg) {
+  arg.classList.add("popup_opened");
+}
+
+function openEditPopup() {
+  openPopup(popupEdit);
   nameInput.setAttribute('value', profileName.textContent);
   descriptionInput.setAttribute('value', profileDescription.textContent);
 }
 
-function popupClosed() {
-  popup.classList.remove("popup_opened");
+function openAddPopup() {
+  openPopup(popupAdd);
+  placeTitleInput.setAttribute('placeholder', 'Название');
+  placeLinkInput.setAttribute('placeholder', 'Ссылка на картинку');
 }
 
-function formSubmitHandler(evt) {
+function closePopup(arg) {
+  arg.classList.remove("popup_opened");
+  // arg.style = 'transition: opacity .5s linear';
+}
+
+function submitFormEdit(evt) {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  popup.classList.remove("popup_opened");
+  popupEdit.classList.remove("popup_opened");
 }
 
-editButton.addEventListener("click", popupOpened);
-popupClose.addEventListener("click", popupClosed);
-// overlay.addEventListener("click", popupClosed);
-formElement.addEventListener("submit", formSubmitHandler);
+function submitFormAdd(evt) {
+  // evt.preventDefault();
+
+  // profileName.textContent = nameInput.value;
+  // profileDescription.textContent = descriptionInput.value;
+  popupAdd.classList.remove("popup_opened");
+}
+
+//EventListeners
+profileEditButton.addEventListener("click", openEditPopup);
+profileAddButton.addEventListener("click", openAddPopup);
+popupEditClose.addEventListener("click", function() {
+  closePopup(popupEdit);
+});
+popupAddClose.addEventListener("click", function() {
+  closePopup(popupAdd);
+});
+// popupOverlay.addEventListener("click", closePopup);
+formElementEdit.addEventListener("submit", submitFormEdit);
+formElementAdd.addEventListener("submit", submitFormAdd);
+

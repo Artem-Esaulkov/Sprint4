@@ -46,50 +46,72 @@ const initialCards = [
   }
 ];
 
+const reserveCards = {name: '', link: ''};
+
 //Elements forming
 const elements = document.querySelector('.elements');
 let element = document.querySelector('.element');
 const card = document.querySelector('#card').content;
 
-initialCards.forEach(function(item) {
+function takeElementFromTemplate(item) {
   element = card.cloneNode(true);
   const elementImage = element.querySelector('.element__image');
   const elementDescription = element.querySelector('.element__description');
   const elementTitle = elementDescription.querySelector('.element__title');
-  const elementLike = elementDescription.querySelector('.element__like_active');
-
+  const elementLike = elementDescription.querySelector('.element__like');
+  const elementDelete = element.querySelector('.element__delete');
   elementImage.src = item.link;
   elementImage.alt = item.name;
   elementTitle.textContent = item.name;
-
-  elements.append(element);
   elementLike.addEventListener('click', function(evt) {
     evt.target.classList.toggle('element__like_active');
-    console.log('AAA');
-  })
+  });
+  elementDelete.addEventListener('click', function(evt) {
+    evt.target.parentElement.remove();
+  });
+};
+
+// function toggleLike() {
+//   elementLike.addEventListener('click', function(evt) {
+//     evt.target.classList.toggle('element__like_active');
+//   });
+// };
+
+initialCards.forEach(function(item) {
+  takeElementFromTemplate(item);
+  elements.append(element);
+  // toggleLike();
 });
 
 //Forms functions
 function openPopup(arg) {
   arg.classList.add("popup_opened");
-}
+};
 
 function openEditPopup() {
   openPopup(popupEdit);
   nameInput.setAttribute('value', profileName.textContent);
   descriptionInput.setAttribute('value', profileDescription.textContent);
-}
+};
 
 function openAddPopup() {
   openPopup(popupAdd);
   placeTitleInput.setAttribute('placeholder', 'Название');
   placeLinkInput.setAttribute('placeholder', 'Ссылка на картинку');
-}
+};
 
 function closePopup(arg) {
   arg.classList.remove("popup_opened");
   // arg.style = 'transition: opacity .5s linear';
-}
+};
+
+function addPlaceCard() {
+  reserveCards.name = placeTitleInput.value;
+  reserveCards.link = placeLinkInput.value;
+  takeElementFromTemplate(reserveCards);
+  elements.prepend(element);
+  // toggleLike();
+};
 
 function submitFormEdit(evt) {
   evt.preventDefault();
@@ -100,10 +122,8 @@ function submitFormEdit(evt) {
 }
 
 function submitFormAdd(evt) {
-  // evt.preventDefault();
-
-  // profileName.textContent = nameInput.value;
-  // profileDescription.textContent = descriptionInput.value;
+  evt.preventDefault();
+  addPlaceCard();
   popupAdd.classList.remove("popup_opened");
 }
 

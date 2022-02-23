@@ -1,15 +1,20 @@
 //Popup variables
-const popup = document.querySelectorAll(".popup");
-const popupEdit = document.querySelector(".popup_edit");
-const popupAdd = document.querySelector(".popup_add");
-const popupEditClose = document.querySelectorAll(".popup__close")[0];
-const popupAddClose = document.querySelectorAll(".popup__close")[1];
+const popups = document.querySelectorAll(".popup");
+const popupEdit = popups[0];
+const popupAdd = popups[1];
+const popupImage = popups[2];
+const popupsClose = document.querySelectorAll(".popup__close");
+const popupEditClose = popupEdit.querySelector(".popup__close");
+const popupAddClose = popupAdd.querySelector(".popup__close");
+const popupImageClose = popupImage.querySelector(".popup__close");
 const formElementEdit = popupEdit.querySelector(".popup__container_edit");
 const formElementAdd = popupAdd.querySelector(".popup__container_add");
 const nameInput = formElementEdit.querySelector(".popup__field_name");
 const descriptionInput = formElementEdit.querySelector(".popup__field_description");
 const placeTitleInput = formElementAdd.querySelector(".popup__field_title");
 const placeLinkInput = formElementAdd.querySelector(".popup__field_link");
+const popupImageElement = popupImage.querySelector(".popup__image-element");
+const popupImageTitle = popupImage.querySelector(".popup__image-title");
 // const popupOverlay = popup.querySelector(".popup__overlay");
 
 //Profile variables
@@ -69,21 +74,20 @@ function takeElementFromTemplate(item) {
   elementDelete.addEventListener('click', function(evt) {
     evt.target.parentElement.remove();
   });
+  elementImage.addEventListener('click', function(evt) {
+    openPopup(popupImage);
+    popupImageElement.src = evt.target.src;
+    popupImageElement.alt = evt.target.alt;
+    popupImageTitle.textContent = evt.target.alt;
+  });
 };
-
-// function toggleLike() {
-//   elementLike.addEventListener('click', function(evt) {
-//     evt.target.classList.toggle('element__like_active');
-//   });
-// };
 
 initialCards.forEach(function(item) {
   takeElementFromTemplate(item);
   elements.append(element);
-  // toggleLike();
 });
 
-//Forms functions
+//Forms and Popups functions
 function openPopup(arg) {
   arg.classList.add("popup_opened");
 };
@@ -102,7 +106,14 @@ function openAddPopup() {
 
 function closePopup(arg) {
   arg.classList.remove("popup_opened");
-  // arg.style = 'transition: opacity .5s linear';
+};
+
+function closeAllPopups() {
+  popupsClose.forEach(function(item) {
+    item.addEventListener("click", function(evt) {
+      closePopup(evt.target.parentElement.parentElement);
+  });
+});
 };
 
 function addPlaceCard() {
@@ -110,7 +121,6 @@ function addPlaceCard() {
   reserveCards.link = placeLinkInput.value;
   takeElementFromTemplate(reserveCards);
   elements.prepend(element);
-  // toggleLike();
 };
 
 function submitFormEdit(evt) {
@@ -125,18 +135,14 @@ function submitFormAdd(evt) {
   evt.preventDefault();
   addPlaceCard();
   popupAdd.classList.remove("popup_opened");
+  placeTitleInput.value = '';
+  placeLinkInput.value = '';
 }
 
 //EventListeners
 profileEditButton.addEventListener("click", openEditPopup);
 profileAddButton.addEventListener("click", openAddPopup);
-popupEditClose.addEventListener("click", function() {
-  closePopup(popupEdit);
-});
-popupAddClose.addEventListener("click", function() {
-  closePopup(popupAdd);
-});
+closeAllPopups();
 // popupOverlay.addEventListener("click", closePopup);
 formElementEdit.addEventListener("submit", submitFormEdit);
 formElementAdd.addEventListener("submit", submitFormAdd);
-

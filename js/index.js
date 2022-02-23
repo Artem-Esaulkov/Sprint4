@@ -128,13 +128,13 @@ function submitFormEdit(evt) {
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  popupEdit.classList.remove("popup_opened");
+  closePopup(popupEdit);
 }
 
 function submitFormAdd(evt) {
   evt.preventDefault();
   addPlaceCard();
-  popupAdd.classList.remove("popup_opened");
+  closePopup(popupAdd);
   placeTitleInput.value = '';
   placeLinkInput.value = '';
 }

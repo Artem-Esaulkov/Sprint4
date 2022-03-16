@@ -1,9 +1,9 @@
 //Popup variables
-const popups = document.querySelectorAll(".popup");
+const popups = Array.from(document.querySelectorAll(".popup"));
 const popupEdit = popups[0];
 const popupAdd = popups[1];
 const popupImage = popups[2];
-const popupsClose = document.querySelectorAll(".popup__close");
+const popupsClose = Array.from(document.querySelectorAll(".popup__close"));
 const popupEditClose = popupEdit.querySelector(".popup__close");
 const popupAddClose = popupAdd.querySelector(".popup__close");
 const popupImageClose = popupImage.querySelector(".popup__close");
@@ -15,7 +15,6 @@ const placeTitleInput = formElementAdd.querySelector(".popup__field_title");
 const placeLinkInput = formElementAdd.querySelector(".popup__field_link");
 const popupImageElement = popupImage.querySelector(".popup__image-element");
 const popupImageTitle = popupImage.querySelector(".popup__image-title");
-// const popupOverlay = popup.querySelector(".popup__overlay");
 
 //Profile variables
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -58,7 +57,7 @@ const elements = document.querySelector('.elements');
 let element = document.querySelector('.element');
 const card = document.querySelector('#card').content;
 
-function takeElementFromTemplate(item) {
+const takeElementFromTemplate = (item) => {
   element = card.cloneNode(true);
   const elementImage = element.querySelector('.element__image');
   const elementDescription = element.querySelector('.element__description');
@@ -68,13 +67,13 @@ function takeElementFromTemplate(item) {
   elementImage.src = item.link;
   elementImage.alt = item.name;
   elementTitle.textContent = item.name;
-  elementLike.addEventListener('click', function(evt) {
+  elementLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('element__like_active');
   });
-  elementDelete.addEventListener('click', function(evt) {
+  elementDelete.addEventListener('click', (evt) => {
     evt.target.parentElement.remove();
   });
-  elementImage.addEventListener('click', function(evt) {
+  elementImage.addEventListener('click', (evt) => {
     openPopup(popupImage);
     popupImageElement.src = evt.target.src;
     popupImageElement.alt = evt.target.alt;
@@ -82,48 +81,58 @@ function takeElementFromTemplate(item) {
   });
 };
 
-initialCards.forEach(function(item) {
+initialCards.forEach((item) => {
   takeElementFromTemplate(item);
   elements.append(element);
 });
 
 //Forms and Popups functions
-function openPopup(arg) {
+const openPopup = (arg) => {
   arg.classList.add("popup_opened");
 };
 
-function openEditPopup() {
+const openEditPopup = () => {
   openPopup(popupEdit);
   nameInput.setAttribute('value', profileName.textContent);
   descriptionInput.setAttribute('value', profileDescription.textContent);
 };
 
-function openAddPopup() {
+const openAddPopup = () => {
   openPopup(popupAdd);
   placeTitleInput.setAttribute('placeholder', 'Название');
   placeLinkInput.setAttribute('placeholder', 'Ссылка на картинку');
 };
 
-function closePopup(arg) {
+const closePopup = (arg) => {
   arg.classList.remove("popup_opened");
 };
 
-function closeAllPopups() {
-  popupsClose.forEach(function(item) {
-    item.addEventListener("click", function(evt) {
-      closePopup(evt.target.parentElement.parentElement);
+const closeAllPopups = () => {
+  const popupOverlay = Array.from(document.querySelectorAll('.popup__overlay'));
+  popupOverlay.forEach((item) => {
+    popupsClose.push(item);
   });
-});
+
+  popupsClose.forEach((item) => {
+    item.addEventListener("click", (evt) => {
+      const popupClosing = evt.target.parentElement.parentElement;
+      if (popupClosing !== document.querySelector('.page')) {
+        closePopup(popupClosing);
+      } else {
+        closePopup(evt.target.parentElement);
+      };
+    });
+  });
 };
 
-function addPlaceCard() {
+const addPlaceCard = () => {
   reserveCards.name = placeTitleInput.value;
   reserveCards.link = placeLinkInput.value;
   takeElementFromTemplate(reserveCards);
   elements.prepend(element);
 };
 
-function submitFormEdit(evt) {
+const submitFormEdit = (evt) => {
   evt.preventDefault();
 
   profileName.textContent = nameInput.value;
@@ -131,7 +140,7 @@ function submitFormEdit(evt) {
   closePopup(popupEdit);
 }
 
-function submitFormAdd(evt) {
+const submitFormAdd = (evt) => {
   evt.preventDefault();
   addPlaceCard();
   closePopup(popupAdd);

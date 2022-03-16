@@ -18,12 +18,22 @@
           type="text"
           class="popup__field popup__field_name"
           name="profile-name"
+          id="profile-name"
+          required
+          minlength="2"
+          maxlength="40"
         />
+        <span class="profile-name-error"></span>
         <input
           type="text"
           class="popup__field popup__field_description"
           name="profile-description"
+          id="profile-description"
+          required
+          minlength="2"
+          maxlength="200"
         />
+        <span class="profile-description-error"></span>
         <button type="submit" class="popup__button" aria-label="Сохранить">Сохранить</button>
         <button type="button" class="popup__close" aria-label="Закрыть">
       </form>

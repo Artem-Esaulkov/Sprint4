@@ -1,3 +1,15 @@
+//Object settings
+const obj = {
+  formSelector: ".popup",
+  formSelectorOpened: ".popup_opened",
+  formFieldSet: ".popup__container",
+  inputSelector: ".popup__field",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_inactive",
+  inputErrorClass: "popup__field_type-error",
+  errorClass: "popup__field-error",
+};
+
 //Popup variables
 const popups = Array.from(document.querySelectorAll(".popup"));
 const popupEdit = popups[0];
@@ -109,12 +121,16 @@ const openEditPopup = () => {
   openPopup(popupEdit);
   nameInput.setAttribute("value", profileName.textContent);
   descriptionInput.setAttribute("value", profileDescription.textContent);
+  const buttonEditProfile = popupEdit.querySelector(obj.submitButtonSelector);
+  setButtonDisabled(buttonEditProfile, obj);
 };
 
 const openAddPopup = () => {
   openPopup(popupAdd);
   placeTitleInput.setAttribute("placeholder", "Название");
   placeLinkInput.setAttribute("placeholder", "Ссылка на картинку");
+  const buttonAddCard = popupAdd.querySelector(obj.submitButtonSelector);
+  setButtonDisabled(buttonAddCard, obj);
 };
 
 const closeAllPopups = () => {

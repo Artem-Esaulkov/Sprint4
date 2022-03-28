@@ -24,9 +24,9 @@ export class FormValidator {
   
   _checkInputValidity = (inputElement) => {
     if (!inputElement.validity.valid) {
-      showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      hideInputError(inputElement);
+      this._hideInputError(inputElement);
     }
   };
   
@@ -70,15 +70,4 @@ export class FormValidator {
     });
     this._setEventListeners();
   };
-}
-
-// const formList = Array.from(document.querySelectorAll(this._obj.formSelector));
-//     formList.forEach((formElement) => {
-//       formElement.addEventListener("submit", (evt) => {
-//         evt.preventDefault();
-//       });
-  
-//       const fieldsetList = Array.from(
-//         formElement.querySelectorAll(obj.formFieldSet)
-//       );
-//       fieldsetList.forEach((fieldSet) => {
+};

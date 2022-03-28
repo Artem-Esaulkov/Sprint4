@@ -100,6 +100,13 @@ const closeByEscape = (evt) => {
   }
 };
 
+const validateForm = () => {
+  const formOpened = document.querySelector(obj.formSelectorOpened);
+  const form = new FormValidator(obj, formOpened);
+  form.enableValidation();
+  form._setButtonDisabled();
+}
+
 export const openPopup = (arg) => {
   arg.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
@@ -109,16 +116,14 @@ const openEditPopup = () => {
   openPopup(popupEdit);
   nameInput.setAttribute("value", profileName.textContent);
   descriptionInput.setAttribute("value", profileDescription.textContent);
-  const buttonEditProfile = popupEdit.querySelector(obj.submitButtonSelector);
-  //setButtonDisabled(buttonEditProfile, obj);
+  validateForm();
 };
 
 const openAddPopup = () => {
   openPopup(popupAdd);
   placeTitleInput.setAttribute("placeholder", "Название");
   placeLinkInput.setAttribute("placeholder", "Ссылка на картинку");
-  const buttonAddCard = popupAdd.querySelector(obj.submitButtonSelector);
-  //setButtonDisabled(buttonAddCard, obj);
+  validateForm();
 };
 
 const closeAllPopups = () => {
@@ -156,14 +161,6 @@ const submitFormAdd = (evt) => {
   placeTitleInput.value = "";
   placeLinkInput.value = "";
 };
-
-// Forms Validation
-
-const formList = Array.from(document.querySelectorAll(obj.formSelector));
-formList.forEach((item) => {
-  const form = new FormValidator(obj, item);
-  form.enableValidation();
-});
 
 //EventListeners
 profileEditButton.addEventListener("click", openEditPopup);

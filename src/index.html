@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
   </head>
   <body class="page">
 
@@ -83,7 +83,7 @@
 
     <header class="header">
       <img
-        src="./images/logo-mesto.svg"
+      src="<%=require('./images/logo-mesto.svg')%>"
         alt="Логотип Место"
         class="header__logo"
       />
@@ -94,8 +94,7 @@
       <!-- Profile -->
 
       <section class="profile">
-        <img
-          src="./images/avatar.png"
+        <img src="<%=require('./images/avatar.png')%>"
           alt="аватар профиля"
           class="profile__avatar"
         />
@@ -131,6 +130,6 @@
 
     <!-- Script -->
 
-    <script type="module" src="./js/index.js"></script>
+    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>

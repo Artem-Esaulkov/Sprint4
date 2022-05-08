@@ -1,21 +1,11 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import Section from "./Section.js";
-import PopupWithForm from "./PopupWithForm.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { UserInfo } from "./UserInfo.js";
-
-//Object settings
-const obj = {
-  formSelector: ".popup",
-  formSelectorOpened: ".popup_opened",
-  formFieldSet: ".popup__container",
-  inputSelector: ".popup__field",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_inactive",
-  inputErrorClass: "popup__field_type-error",
-  errorClass: "popup__field-error",
-};
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { obj, profileEditButton, profileName, profileDescription, profileAddButton, initialCards, reserveCards } from "../utils/constants.js";
+import './index.css';
 
 //Validate Form
 const validateForm = () => {
@@ -25,42 +15,7 @@ const validateForm = () => {
   form._setButtonDisabled();
 }
 
-//Profile variables
-const profileEditButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector(".profile__name");
-const profileDescription = document.querySelector(".profile__description");
-const profileAddButton = document.querySelector(".profile__add-button");
-
-//initialCards declaration
-const initialCards = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
 //Cards forming
-const reserveCards = { name: "", link: "" };
 
 const handleCardClick = (item, title) => {
   item.addEventListener('click', () => {

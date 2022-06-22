@@ -6,12 +6,13 @@ export class UserInfo {
 
     getUserInfo() {
         const userInfoObject = {};
-        userInfoObject[this._name.name] = this._description.textContent;
+        userInfoObject['profile-name'] = this._name.textContent;
+        userInfoObject['profile-description'] = this._description.textContent;
         return userInfoObject;
     }
 
     setUserInfo(data) {
-        this._name = data.name;
-        this._description = data.value;
+        this._name.textContent = data.name;
+        this._description.textContent = data.about;
     }
 }
